@@ -1,0 +1,396 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.app-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.portal-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+/* ==========================================================================
+   2. AUTHENTICATION SCREENS (LOGIN / REGISTER)
+   ========================================================================== */
+.auth-container {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  margin: 60px auto;
+  box-sizing: border-box;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0 20px 0;
+  border: 1px solid #dcdfe6;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #28a745;
+}
+
+/* Buttons config */
+button {
+  width: 100%;
+  padding: 13px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.15);
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* ==========================================================================
+   3. APP PORTAL TOP HEADER BAR
+   ========================================================================== */
+.portal-header {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 6%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border-bottom: 1px solid #eee;
+}
+
+.header-logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #28a745;
+}
+.header-logo span { color: #333; }
+
+.header-search input {
+  width: 400px;
+  padding: 10px 15px;
+  margin: 0;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: #f5f5f5;
+}
+
+.logout-btn {
+  width: auto;
+  padding: 8px 20px;
+  background: transparent;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  box-shadow: none;
+}
+.logout-btn:hover { background: #dc3545; color: white; }
+
+/* ==========================================================================
+   4. PORTAL DASHBOARD STRUCTURE SPLITS
+   ========================================================================== */
+.portal-main {
+  display: flex;
+  width: 88%;
+  margin: 30px auto;
+  gap: 40px;
+}
+
+/* Left side dashboard panel tracking metrics */
+.billing-panel {
+  flex: 1;
+  max-width: 380px;
+}
+
+.sticky-tracker {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 30px;
+}
+
+.mega-timer {
+  font-size: 46px;
+  font-weight: bold;
+  font-family: monospace;
+  background: #222;
+  color: #00ff66;
+  text-align: center;
+  padding: 15px 0;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.price-matrix {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.matrix-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.matrix-row.total {
+  border-top: 1px dashed #ccc;
+  padding-top: 10px;
+  font-size: 18px;
+  color: #28a745;
+}
+
+.action-btn {
+  background: #28a745;
+  box-shadow: 0 4px 12px rgba(40,167,69,0.2);
+}
+.action-btn.running { background: #dc3545; box-shadow: none; }
+
+/* ==========================================================================
+   5. CATALOG ROW & VERTICAL LAYOUT CONFIG
+   ========================================================================== */
+.catalog-panel {
+  flex: 3;
+  min-width: 0; 
+}
+
+.tab-bar {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+}
+
+.tab-bar span {
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+}
+
+.tab-bar .active-tab {
+  color: #dc3545;
+  border-bottom: 3px solid #dc3545;
+  padding-bottom: 10px;
+}
+
+/* Stacks items vertically as a clean list column */
+.equipment-grid {
+  display: flex;
+  flex-direction: column;   
+  gap: 20px;                 
+  width: 100%;
+}
+
+/* Formats the individual cards to fit a horizontal list row item layout */
+.equipment-card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e1e4e8;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+  display: flex;
+  flex-direction: row;       
+  width: 100%;
+  height: 140px;             
+  box-sizing: border-box;
+}
+
+.equipment-card:hover {
+  transform: translateX(5px); 
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.active-card {
+  border: 2px solid #28a745;
+}
+
+/* Image container fixed on the left side of the row layout */
+.card-image-box {
+  background: #f5f7fa;
+  width: 160px;              
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  flex-shrink: 0;
+}
+
+/* Arranges the details side-by-side inside the card body */
+.card-body {
+  padding: 15px 25px;
+  display: flex;
+  flex-direction: row;       
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Wrapper to hold text lines stacked inside the flex row body */
+.card-details-left {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.badge {
+  background: #fff3f3;
+  color: #dc3545;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  margin-bottom: 6px;
+}
+
+.card-body h3 {
+  font-size: 18px;
+  margin: 2px 0;
+  color: #333;
+}
+
+.specs {
+  font-size: 13px;
+  color: #777;
+  margin: 4px 0 8px 0;
+}
+
+.card-price {
+  font-size: 13px;
+  color: #555;
+}
+
+.card-price span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Select machine action button anchored to the right side of the row */
+.select-machine-btn {
+  width: 180px;              
+  padding: 12px;
+  font-size: 14px;
+  background: white;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  box-shadow: none;
+}
+
+.select-machine-btn:hover { 
+  background: #dc3545; 
+  color: white; 
+}
+
+.active-card .select-machine-btn {
+  background: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+
+/* ==========================================================================
+   6. MOBILE DEVICES BREAKPOINT STYLING
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Resets grid framework splits */
+  .portal-main {
+    flex-direction: column;
+    width: 92%;
+    margin: 15px auto;
+    gap: 20px;
+  }
+
+  /* Compresses tracking header rows */
+  .portal-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .header-search input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .logout-btn {
+    width: 100%;
+  }
+
+  /* Unlocks side positioning blocks */
+  .billing-panel {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .sticky-tracker {
+    position: relative;
+    top: 0;
+    padding: 15px;
+  }
+
+  .mega-timer {
+    font-size: 38px;
+  }
+
+  /* Converts equipment lists from row columns to standalone stack content blocks */
+  .equipment-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .card-image-box {
+    width: 100%;
+    height: 150px;
+    padding: 10px 0;
+  }
+
+  .card-body {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .card-details-left {
+    width: 100%;
+  }
+
+  .select-machine-btn {
+    width: 100%;
+  }
+}
